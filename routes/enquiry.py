@@ -104,6 +104,7 @@ async def send_enquiry(req: EnquiryRequest):
         print(vendor_doc["additional_details"])
         # Pass additional details to the call_vendor function
         call_result = call_vendor(vendor, req.product, req.location, vendor_doc["additional_details"])
+        print(call_result)
         calls.append(call_result)
 
         call_id = call_result.get("call_id")
@@ -142,7 +143,7 @@ import json
 
 API_KEY = "8c4cd1a3-67ab-4449-bdeb-90e8dd4238c4"
 ASSISTANT_ID = "98d8ba6f-d6e0-4e72-8100-d095a976c474"
-PHONE_NUMBER_ID = "d4dfe093-298f-4033-90b6-27602eff8ef4"
+PHONE_NUMBER_ID = "36491758-d626-4f39-8831-14e3c5614c6a"
 
 BASE_URL = "https://api.vapi.ai"
 HEADERS = {
@@ -183,6 +184,7 @@ def call_vendor(vendor: dict, product_name: str, location: str, details:str) -> 
         response = requests.post(f"{BASE_URL}/call", headers=HEADERS, json=payload, timeout=30)
         response.raise_for_status()
         result = response.json()
+        print(result)
         return {
             "vendor": vendor_name,
             "phone": customer_phone,
