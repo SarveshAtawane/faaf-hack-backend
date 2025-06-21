@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pydantic
+pymongo
+python-dotenv
+requests
+serpapi
+google-search-results
